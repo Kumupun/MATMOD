@@ -1,5 +1,4 @@
 import numpy as np
-from rich import print
 
 import func
 import visual
