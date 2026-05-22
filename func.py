@@ -24,14 +24,14 @@ def solve_wave_equation(params) -> tuple:
     
     u1 = lambda x: np.zeros_like(x)
 
-    def exact_solution(x, t):                            # ФОРМУЛА ДАЛАМБЕРА ДЛЯ БУДЬ ЯКОГО u0 u1
+    def exact_solution(x, t):                            # ФОРМУЛА ДАЛАМБЕРА ДЛЯ БУДЬ ЯКОГО u0 u1 на нескінченній прямій
         res = 0.5 * (u0(x - C * t) + u0(x + C * t))
 
         # чисельний інтеграл
         integral_part = np.zeros_like(x)
 
         for i, xi in enumerate(x):
-            s = np.linspace(xi - C*t, xi + C*t, 100)  # розбиття
+            s = np.linspace(xi - C*t, xi + C*t, 200)  # розбиття
             integral_part[i] = np.trapezoid(u1(s), s)
 
         res += (1 / (2 * C)) * integral_part
@@ -41,7 +41,7 @@ def solve_wave_equation(params) -> tuple:
 
     Y[0, :] = u0(x)                          # ПОЧАТКОВИЙ ШАР
 
-    Y[:, 0] = 0                         # КРАЙОВІ УМОВИ (Діріхле поки, а так теж ввід треба придумати) (тут можна через input)
+    Y[:, 0] = 0                       # КРАЙОВІ УМОВИ (Діріхле поки, а так теж ввід треба придумати) (тут можна через input)
     Y[:, -1] = 0
     
     for i in range(1, nx-1):
