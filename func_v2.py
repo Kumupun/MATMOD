@@ -110,11 +110,6 @@ def solve_wave_equation(params) -> tuple:
     Y_exact = exact_solution(x, t_final)
     Y_numeric = Y[-1, :]
 
-    print("max Y[0]:", np.max(Y[0]))
-    print("max Y[1]:", np.max(Y[1]))  # ДОДАНО ДЛЯ ДІАГНОСТИКИ
-    print("lambda:", lamd)
-    print("max final:", np.max(Y[-1]))
-
     err = np.max(np.abs(Y_exact - Y_numeric))
     err2 = np.mean((Y_exact - Y_numeric)**2)
 
