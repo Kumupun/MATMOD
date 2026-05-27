@@ -1,5 +1,5 @@
 import numpy as np
-import func
+import func_v2 as func
 import visual
 
 def input_parameters() -> tuple:
